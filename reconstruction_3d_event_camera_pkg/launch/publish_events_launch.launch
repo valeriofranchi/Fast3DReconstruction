@@ -1,0 +1,12 @@
+<launch>
+
+    <arg name="events_dat_file"    default="$(find reconstruction_3d_event_camera_pkg)/data/thetacalc1hzlowsen_td.dat"/>
+    <arg name="buffer_size"        default="100"/>
+
+   <!-- Publish events from .dat file -->
+    <node pkg="reconstruction_3d_event_camera_pkg"    type="live_topic_from_dat.py"   name="publish_events_node" output="screen">
+        <param name="events_dat_file"   type="str"      value="$(arg events_dat_file)"/>
+        <param name="buffer_size"       type="double"   value="$(arg buffer_size)"/>
+    </node>
+
+</launch>

@@ -1,0 +1,28 @@
+<launch>
+
+    <!-- Publish events -->
+    <include file="$(find reconstruction_3d_event_camera_pkg)/launch/publish_events_launch.launch"/>
+
+    <arg name="offline"             default="false"/>
+    <arg name="events_topic_name"   default="/cd_events_buffer"/>
+    <arg name="pointcloud_reset"    default="1000000"/>
+    <arg name="theta_topic"         default="/events/extracted_line"/>
+
+    <!-- Denoise events and reconstruct point cloud -->
+    <node pkg="reconstruction_3d_event_camera_pkg"    type="reconstruction.py"   name="reconstruction_node" output="screen">
+        <rosparam command="load" file="$(find reconstruction_3d_event_camera_pkg)/config/reconstruction_params.yaml"/>
+        
+        <param name="offline"             type="bool"   value="$(arg offline)"/>
+        <param name="events_topic_name"   type="str"    value="$(arg events_topic_name)"/> 
+        <param name="pointcloud_reset"    type="int"    value="$(arg pointcloud_reset)"/>
+        <param name="theta_topic"         type="str"    value="$(arg theta_topic)"/>
+
+    </node>
+
+    <!-- Broadcast transforms -->
+    <include file="$(find reconstruction_3d_event_camera_pkg)/launch/broadcast_transforms_launch.launch"/>
+
+    <!-- Launches personalised rviz configuration file -->
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find reconstruction_3d_event_camera_pkg)/rviz/main_config.rviz"/>
+    
+</launch>

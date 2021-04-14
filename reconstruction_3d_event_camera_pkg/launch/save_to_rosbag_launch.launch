@@ -1,0 +1,20 @@
+<launch>
+
+    <!-- 1 if you want write to rosbag, 0 if you don't want to -->
+    <arg name="topics" default="[{
+        '/events/points: 1,
+        '/events/image/raw: 1,
+        '/events/image/denoised: 1,
+        '/events/extracted_line: 1,
+    }]"/>  
+
+    <arg name="events_bag_file"    default="$(find reconstruction_3d_event_camera_pkg)/results/reconstruction_output.bag"/>
+
+    <!-- Save topics to ROSBag file -->
+    <node pkg="reconstruction_3d_event_camera_pkg"  type="save_reconstruction.py"   name="save_output_node" output="screen">
+        <param name="events_bag_file"   type="str"  value="$(arg events_bag_file)"/>
+
+        <rosparam param="topics" subst_value="True">$(arg topics)</rosparam>
+    </node>
+
+</launch>

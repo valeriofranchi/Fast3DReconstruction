@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="reconstruction3d_event_camera_laser_line"    type="calibrate_camera.py"   name="camera_calibration_node" output="screen"/>
+</launch>

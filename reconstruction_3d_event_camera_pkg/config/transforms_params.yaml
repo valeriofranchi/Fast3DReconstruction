@@ -1,0 +1,12 @@
+# Static transform between base robot frame and camera mounting point 
+base_frame_id: 'base_link'
+camera_mount_frame_id: 'event_camera_mount_link'
+base_to_cam_mount_pos_offset: [0.0, 3.0, 10.0]
+base_to_cam_mount_rot_offset: [0.0, 0.0, 0.0]
+
+# Static transform between camera mounting point and camera centre 
+camera_centre_frame_id: 'event_camera_centre_link'
+cam_mount_to_centre_pos_offset: [0.0, 0.4, 0.2]
+cam_mount_to_centre_rot_offset: [0.0, 0.0, 0.0]
+
+laser_frame_id: 'laser_link' # laser frame id 

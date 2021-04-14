@@ -1,0 +1,30 @@
+# Camera Calibration parameters
+cx: 241.9 # Centre pixel x
+cy: 168.3 # Centre pixel y
+l_cy: -0.150 # Offset between camera and laser in y-direction
+l_cz: 0.135 # Offset between camera and laser in z-direction
+fx: 419.5 # Focal length of camera in x-direction
+fy: 419.6 # Focal length of camera in y-direction
+
+# Reconstruction parameters
+dist_to_wall: 0.260 # Distance to wall from center of camera 
+z_max_limit: 0.3 # Maximum z value for 3D point to be considered not noise
+z_min_limit: 0.0 # Minimum z value for 3D point to be considered not noise
+
+# Event Camera parameters 
+width: 480 # Width in pixels of camera
+height: 360 # Height in pixels of camera
+
+# Line Extraction parameters 
+acc_time: 1500 # Interval to group events for processing
+frame_rate: 180 # Frequency of event processing 
+neighbours: 5 # Column neighbourhood to consider for median calculation
+tail_length: 15 # Minimum tail length of positive events 
+min_density: 2 # Minimum density of positive events around positive event pixel
+
+# Visualisation parameters
+dilate_line: true # True to dilate line in image, false if original size 
+visualise_images: true # True to visualize raw and denoised images, false if not 
+pointcloud_scale_factor: 10.0 # Put 1.0 for no scaling, it will scale visualisation on rviz
+
+
